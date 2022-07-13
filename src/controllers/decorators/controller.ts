@@ -1,11 +1,11 @@
 import 'reflect-metadata'
-import express from 'express'
 import { MetadataKeys } from '../enums/meta-data-keys.enum'
 import { Methods } from '../enums/methods.enum'
+import { AppRouter } from '../../router'
 
 export function controller(routePrefix: string) {
   return function(target: Function) {
-    const router = express.Router()
+    const router = AppRouter.getInstance()
 
     for (let key in target.prototype) {
       const routeHandler = target.prototype[key]
